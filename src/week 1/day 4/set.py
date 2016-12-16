@@ -1,0 +1,10 @@
+my_set = {'Red', 'Blue', 'Green'}
+print(my_set, '\tlen:', len(my_set))
+my_set.add('Yellow')
+print(my_set, '\tlen:', len(my_set))
+my_set2 = my_set.copy()
+my_set.discard('Red')
+print('1:',my_set, '\tlen:', len(my_set))
+print('2:',my_set2, '\tlen:', len(my_set2))
+print('diff:', my_set2.difference(my_set))
+print('inter:', my_set.intersection(my_set2))
