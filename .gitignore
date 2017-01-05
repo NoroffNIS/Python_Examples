@@ -1,11 +1,5 @@
-
 .idea/misc.xml
-*.xml
 .idea/Python_Examples.iml
-
-*.xml
-.idea/Python_Examples.iml
-
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template
 # Byte-compiled / optimized / DLL files
@@ -103,6 +97,8 @@ src/week 3/
 src/week 4/
 src/week 5/
 src/week 6/
+.idea/
 .idea/workspace.xml
-.idea/Python_Examples.iml
-.idea/workspace.xml
+.idea/dictionaries/
+.idea/misc.xml
+*.xml
