@@ -4,9 +4,9 @@ for fruit in fruits:
     print(fruit)
 print('----------')
 
-list = []
+sequence = []
 for number in range(1, 100):
-    list.append(number)
+    sequence.append(number)
 
 print(list)
 print('----------')
