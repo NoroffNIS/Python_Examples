@@ -1,0 +1,8 @@
+print('This is a text')
+input_number = input('Type in a number:')
+print(type(input_number))
+input_number = int(input_number)
+print(type(input_number))
+print('This was the number you typed: ', input_number)
+input_number = input('Type in a number:')
+print('This was the number you typed: ', input_number)
