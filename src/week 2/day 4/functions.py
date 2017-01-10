@@ -1,6 +1,13 @@
 import math
 
-def function_name():
-    print(math.pi)
+def main():
+    print('Main function')
+    function_name()
+    print('After function')
 
-function_name()
+def function_name():
+    print('Inside function\n'*10, end='')
+
+if __name__ == '__main__':
+    main()
+
