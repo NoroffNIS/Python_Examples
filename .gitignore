@@ -102,3 +102,7 @@ src/week 6/
 .idea/dictionaries/
 .idea/misc.xml
 *.xml
+
+.idea/Python_Examples.iml
+
+.idea/workspace.xml
