@@ -92,11 +92,6 @@ ENV/
 # Rope project settings
 .ropeproject
 
-.gitignore
-src/week 3/
-src/week 4/
-src/week 5/
-src/week 6/
 .idea/
 .idea/workspace.xml
 .idea/dictionaries/
