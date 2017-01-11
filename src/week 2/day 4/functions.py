@@ -5,4 +5,18 @@ def add():
     sum = number_1 + number_2
     print('The sum is: ', sum)
 
+<<<<<<< HEAD
 add()
+=======
+def main():
+    print('Main function')
+    function_name()
+    print('After function')
+
+def function_name():
+    print('Inside function\n'*10, end='')
+
+if __name__ == '__main__':
+    main()
+
+>>>>>>> origin/master
