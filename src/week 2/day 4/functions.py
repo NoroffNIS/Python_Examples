@@ -5,9 +5,6 @@ def add():
     sum = number_1 + number_2
     print('The sum is: ', sum)
 
-<<<<<<< HEAD
-add()
-=======
 def main():
     print('Main function')
     function_name()
@@ -19,4 +16,3 @@ def function_name():
 if __name__ == '__main__':
     main()
 
->>>>>>> origin/master
