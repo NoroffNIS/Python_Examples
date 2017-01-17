@@ -12,6 +12,8 @@ number_1 = 2**4
 number_2 = math.pow(2, 4)
 print(number_1,' is type ', type(number_1))
 print(number_2,' is type ', type(number_2))
+
+
 '''
 
 print(math.pi)
