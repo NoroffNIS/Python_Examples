@@ -1,4 +1,4 @@
-from People import *
+from people import *
 
 people = People('Brage')
 people.age = 20
