@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 
 window = Tk()
 
@@ -23,7 +24,8 @@ def callback(number):
     print ("button", number)
 
 Button(text="one",   command=lambda: callback(1)).pack()
-Button(text="two",   command=lambda: callback(2)).pack()
-Button(text="three", command=lambda: callback(3)).pack()
+ttk.Button(text="two",   command=lambda: callback(2)).pack()
+ttk.Button(text="three", command=lambda: callback(3)).pack()
+
 
 window.mainloop()
