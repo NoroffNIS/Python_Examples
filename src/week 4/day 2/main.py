@@ -1,20 +1,17 @@
-file_1_list = []
-file_2_list = []
 
-file_1 = open("Lorem_ipsum_3.txt", "r")
-file_2 = open("Lorem_ipsum_1.txt", "r")
+def add_line_to_list(path):
+    file = open(path, "r")
+    line_list = []
+    for line in file:
+        line_list.append(line)
+    file.close()
+    return line_list
 
-print(file_1.__sizeof__())
-print(file_2.__sizeof__())
+file_1_list = add_line_to_list('Lorem_ipsum_1.txt')
+file_2_list = add_line_to_list('Lorem_ipsum_1.txt')
 
-for line in file_1:
-    file_1_list.append(line)
-
-for line in file_2:
-    file_2_list.append(line)
-
-maxlen = len(file_1_list) if len(file_1_list) > len(file_2_list) else len(file_2_list)
-minlen = len(file_1_list) if len(file_1_list) < len(file_2_list) else len(file_2_list)
+maxlen = len(file_1_list) if len(file_1_list) >= len(file_2_list) else len(file_2_list)
+minlen = len(file_1_list) if len(file_1_list) <= len(file_2_list) else len(file_2_list)
 
 total = 0
 equal = 0
