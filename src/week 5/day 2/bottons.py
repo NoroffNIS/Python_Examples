@@ -9,7 +9,7 @@ btn_end = Button(window, text='Exit', command=exit)
 def tog():
     global btn_tog
     if window.cget('bg') == 'yellow':
-        window.config(bg='gray')
+        window.config(bg='grey')
         btn_tog.config(bg='red')
     else:
         window.config(bg='yellow')
