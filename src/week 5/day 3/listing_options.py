@@ -5,15 +5,21 @@ import tkinter.messagebox as box
 window = Tk()
 window.title('Course at Noroff')
 
-frame = Frame(window, colormap='new',height=100, width=100, bd=10, relief=SUNKEN)
+frame = Frame(window, height=100, width=100)
 
-listbox = Listbox(frame)
+listbox = Listbox(frame, selectmode=MULTIPLE)
 listbox.insert(1, 'PRG')
-listbox.insert(2, 'SQL')
-listbox.insert(3, 'HIR')
+listbox.insert(3, 'SQL')
+listbox.insert(2, 'HIR')
 
 def dialog():
-    box.showinfo('Selection', 'Your choice '+listbox.get(listbox.curselection()))
+    stri = StringVar()
+    print(listbox.curselection())
+    for item in listbox.curselection():
+        print(listbox.get(item))
+        stri.set(stri.get() + listbox.get(item))
+
+    box.showinfo('Selection', 'Your choice '+stri)
 
 btn = ttk.Button(frame, text='Choose', command=dialog)
 btn.pack(side=RIGHT, padx=5)
