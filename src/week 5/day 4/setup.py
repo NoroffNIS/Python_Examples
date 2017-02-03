@@ -4,12 +4,12 @@ from cx_Freeze import setup, Executable
 base = None
 if sys.platform == 'win32' : base = 'Win32GUI'
 
-opts = { 'include_files' : ['logo.gif'], 'includes' : [ 'sys', 'base64', 'os', 'socket', 'subprocess' ] }
+opts = { 'include_files' : ['noroff-logo.gif'], 'includes' : [ 'tkinter' ] }
 
 setup(
-    name = 'Lotto' ,
+    name = 'Noroff Images' ,
     version = '1.0' ,
-    description = 'Lottery Number Picker' ,
-    author = 'Mike McGrath' ,
+    description = 'Noroff images' ,
+    author = 'Brage' ,
     options = {'build_exe' : opts } ,
-    executables = [ Executable( 'malware_shell_backdoor.py' , base = base ) ] )
+    executables = [ Executable( 'images.py' , base = base ) ] )
