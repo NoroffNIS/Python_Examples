@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for basic_crawler project
+# Scrapy settings for noroff_webcrawler project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'basic_crawler'
+BOT_NAME = 'noroff_webcrawler'
 
-SPIDER_MODULES = ['basic_crawler.spiders']
-NEWSPIDER_MODULE = 'basic_crawler.spiders'
+SPIDER_MODULES = ['noroff_webcrawler.spiders']
+NEWSPIDER_MODULE = 'noroff_webcrawler.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'basic_crawler (+http://www.yourdomain.com)'
+#USER_AGENT = 'noroff_webcrawler (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -47,13 +47,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'basic_crawler.middlewares.BasicCrawlerSpiderMiddleware': 543,
+#    'noroff_webcrawler.middlewares.NoroffWebcrawlerSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'basic_crawler.middlewares.MyCustomDownloaderMiddleware': 543,
+#    'noroff_webcrawler.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,7 +65,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'basic_crawler.pipelines.SomePipeline': 300,
+#    'noroff_webcrawler.pipelines.SomePipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)

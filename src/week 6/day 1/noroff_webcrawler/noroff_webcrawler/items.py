@@ -8,7 +8,11 @@
 import scrapy
 
 
-class BasicCrawlerItem(scrapy.Item):
+class NoroffWebcrawlerItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    title = scrapy.Field()
+    email = scrapy.Field()
+    comments = scrapy.Field()
+    form = scrapy.Field()
+    location_url = scrapy.Field()
