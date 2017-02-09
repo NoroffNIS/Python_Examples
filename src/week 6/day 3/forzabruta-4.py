@@ -5,12 +5,10 @@ import time
 import getopt
 import re
 import hashlib
-
+from sys import platform
 from termcolor import colored
-import traceback
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+
 
 
 def banner():
@@ -39,14 +37,6 @@ class request_performer(Thread):
         except Exception as e:
             print('Thread error:',e)
 
-    def md5(self, fname):
-        hash_md5 = hashlib.md5()
-        with open(fname, "rb") as f:
-            for chunk in iter(lambda: f.read(4096), b""):
-                hash_md5.update(chunk)
-        print(hash_md5.hexdigest())
-        return hash_md5.hexdigest()
-
     def run(self):
         try:
             start = time.time()
@@ -57,7 +47,7 @@ class request_performer(Thread):
             chars = str(len(r._content))
             words = str(len(re.findall(b"\S+", r.content)))
             code = str(r.status_code)
-            hash = 'hash'#self.md5(r.content)
+            hash = hashlib.md5(r.content).hexdigest()
 
             if r.history != []:
                 first = r.history[0]
@@ -66,18 +56,20 @@ class request_performer(Thread):
                 pass
 
             if self.hidecode != code:
-                if '200' <= code < '300':
-                   # dcap = dict(DesiredCapabilities.PHANTOMJS)
-                   # driver = webdriver.PhantomJS(desired_capabilities=dcap)
-                   # time.sleep(2)
-                   # driver.set_window_size(1024, 768)
-                   # driver.get(self.url)
-                   # driver.save_screenshot(self.word + ".png")
-                    print('{:.8}'.format(totaltime) , "  \t" , code , "\t" , chars , "\t" , words , "\t" , lines , "\t" , hash , "\t" , '{:10}'.format(self.word),"\t" , self.url)
-                elif '400' <= code < '500':
-                    print('{:.8}'.format(totaltime) , "  \t" , code , "\t" , chars , " \t" , words , "\t" , lines , "\t" , hash , "\t" , '{:10}'.format(self.word),"\t" , self.url)
-                elif '300' <= code < '400':
-                    print('{:.8}'.format(totaltime) , "  \t" , code , "\t" , chars , "\t" , words , "\t" , lines , "\t" , hash , "\t" , '{:10}'.format(self.word),"\t" , self.url)
+               if platform == "win32":
+                   print('{:.8}'.format(totaltime), "  \t", code, "\t", chars, "\t", words, "\t", lines, "\t", hash,
+                         "\t", '{:10}'.format(self.word), "\t", self.url)
+               elif platform == "darwin" or platform == "linux" or platform == "linux2":
+                   if '200' <= code < '300':
+                       print('{:.8}'.format(totaltime), "  \t", colored(code, 'green'), "\t", chars, "\t", words, "\t", lines, "\t", hash,
+                             "\t", '{:10}'.format(self.word), "\t", self.url)
+                   elif '400' <= code < '500':
+                       print('{:.8}'.format(totaltime), "  \t", colored(code, 'red'), "\t", chars, " \t", words, "\t", lines, "\t",
+                             hash, "\t", '{:10}'.format(self.word), "\t", self.url)
+                   elif '300' <= code < '400':
+                       print('{:.8}'.format(totaltime), "  \t", colored(code, 'blue'), "\t", chars, "\t", words, "\t", lines, "\t", hash,
+                             "\t", '{:10}'.format(self.word), "\t", self.url)
+
             else:
                 pass
             i[0] = i[0] - 1  # Here we remove one thread from the counter
@@ -121,9 +113,9 @@ def launcher_thread(names, th, url, hidecode):
     i = []
     resultlist = []
     i.append(0)
-    print("-------------------------------------------------------------------------------------------------------------")
-    print("Time" + "\t\t" + "Code" + "\tChars \t Words \tLines \t MD5 \t Site \t\t URL \t\t ")
-    print("-------------------------------------------------------------------------------------------------------------")
+    print("-------------------------------------------------------------------------------------------------------------------------------")
+    print("Time" + "\t\t" + "Code" + "\tChars \t Words \tLines \t",'{:32}'.format('MD5')," \t Site \t\t URL \t\t ")
+    print("-------------------------------------------------------------------------------------------------------------------------------")
     while len(names):
         try:
             if i[0] < th:
