@@ -49,6 +49,17 @@ import re
 # is_valid = pattern.findall(string)
 # print(string, ' match ', pattern, ':', is_valid)
 
+#Character class
+string = 'p7'
+pattern = re.compile('^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z\d]{0,8}$')
+is_valid = pattern.fullmatch(string)
+print(string, ' match ', pattern, ':', is_valid)
+
+if is_valid:
+    print(True)
+else:
+    print(False)
+
 # #Special Sequence
 # string = ' p1yt1hon'
 # pattern = re.compile('\s')
