@@ -5,6 +5,8 @@ import time
 import getopt
 import re
 import hashlib
+from sys import platform
+from termcolor import colored
 
 
 def banner():
@@ -51,17 +53,31 @@ class request_performer(Thread):
             chars = str(len(r._content))
             words = str(len(re.findall(b"\S+", r.content)))
             code = str(r.status_code)
-            hash = 'hash'  # self.md5(r.content)
+            hash = hashlib.md5(r.content).hexdigest()
 
             if r.history != []:
                 first = r.history[0]
                 code = str(first.status_code)
             else:
                 pass
-            #print(self.hidecode,'-',chars,'=',self.hidecode != chars)
+
             if self.hidecode != chars:
-                print('{:.8}'.format(totaltime), "  \t", code, "\t", chars, "\t", words, "\t", lines, "\t", hash, "\t",
-                      '{:10}'.format(self.word), "\t", self.payload)
+                if platform == "win32":
+                    print('{:.8}'.format(totaltime), "  \t", code, "\t", chars, "\t", words, "\t", lines, "\t", hash, "\t",
+                             '{:22}'.format(self.word), "\t", self.payload)
+                elif platform == "darwin" or platform == "linux" or platform == "linux2":
+                    if '200' <= code < '300':
+                        print('{:.8}'.format(totaltime), "  \t", colored(code, 'green'), "\t", chars, "\t", words, "\t",
+                              lines, "\t", hash,
+                              "\t", '{:22}'.format(self.word), "\t", self.payload)
+                    elif '400' <= code < '500':
+                        print('{:.8}'.format(totaltime), "  \t", colored(code, 'red'), "\t", chars, " \t", words, "\t",
+                              lines, "\t",
+                              hash, "\t", '{:22}'.format(self.word), "\t", self.payload)
+                    elif '300' <= code < '400':
+                        print('{:.8}'.format(totaltime), "  \t", colored(code, 'blue'), "\t", chars, "\t", words, "\t",
+                              lines, "\t", hash,
+                              "\t", '{:22}'.format(self.word), "\t", self.payload)
             else:
                 pass
             i[0] = i[0] - 1  # Here we remove one thread from the counter
@@ -109,10 +125,10 @@ def launcher_thread(words, th, url, hidecode, payload):
     resultlist = []
     i.append(0)
     print(
-        "-------------------------------------------------------------------------------------------------------------")
-    print("Time" + "\t\t" + "Code" + "\tChars \t Words \tLines \t MD5 \t Word \t\t Payload \t\t ")
+        "-----------------------------------------------------------------------------------------------------------------------------------------------------------------")
+    print("Time" + "\t\t" + "Code" + "\tChars \t Words \tLines \t ",'{:32}'.format('MD5'),'\t{:22}'.format('PassWord'),"\t\tPayload \t\t ")
     print(
-        "-------------------------------------------------------------------------------------------------------------")
+        "-----------------------------------------------------------------------------------------------------------------------------------------------------------------")
     while len(words):
         try:
             if i[0] < th:
