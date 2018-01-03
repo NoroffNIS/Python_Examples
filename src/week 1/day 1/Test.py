@@ -1,3 +1,1 @@
-Hei Hello
-This worked
-update 2
+print("string")
